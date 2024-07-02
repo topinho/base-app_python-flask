@@ -1,0 +1,22 @@
+version: '3'
+services:
+  python-flask:
+    image: base-app_python-flask
+    container_name: base-app_python-flask
+    hostname: base-app_python-flask
+    build:
+      context: ./docker
+    volumes:
+      - ../:/app
+      - /etc/localtime:/etc/localtime:ro 
+      - /home/topinho/code/upload:/upload 
+    ports:
+      - "5021:5051"
+    expose:
+      - "5021"
+    networks:
+      - base-app
+
+networks:
+  base-app:
+    external: true
